@@ -1,0 +1,70 @@
+﻿# Write a python program to implement Greedy BFS algorithm.
+
+
+from queue import PriorityQueue
+
+
+class Graph:
+    def __init__(self):
+        self.graph = {}
+
+
+    def add_edge(self, u, v, weight):
+        if u in self.graph:
+            self.graph[u].append((v, weight))
+        else:
+            self.graph[u] = [(v, weight)]
+
+
+    def greedy_best_first_search(self, start, goal, heuristic):
+        visited = set()
+        priority_queue = PriorityQueue()
+        priority_queue.put((0, start))
+
+
+        while not priority_queue.empty():
+            cost, node = priority_queue.get()
+
+
+            if node not in visited:
+                print(node, end=' ')
+
+
+            if node == goal:
+                print("\nGoal node reached.")
+                return
+
+
+            visited.add(node)
+
+
+            if node in self.graph:
+                for neighbor, weight in self.graph[node]:
+                    if neighbor not in visited:
+                        priority = heuristic[neighbor]
+                        priority_queue.put((priority, neighbor))
+
+
+        print("\nGoal node not reached.")
+
+
+if __name__ == "__main__":
+    g = Graph()
+    g.add_edge('A', 'B', 4)
+    g.add_edge('A', 'C', 1)
+    g.add_edge('B', 'C', 2)
+    g.add_edge('B', 'D', 5)
+    g.add_edge('C', 'D', 8)
+    g.add_edge('C', 'E', 10)
+    g.add_edge('D', 'E', 2)
+    g.add_edge('D', 'F', 6)
+    g.add_edge('E', 'F', 3)
+
+
+    heuristic = {
+        'A': 8, 'B': 6, 'C': 4, 'D': 4, 'E': 2, 'F': 0
+    }
+
+
+    print("Greedy Best-First Search from 'A' to 'F':")
+    g.greedy_best_first_search('A', 'F', heuristic)

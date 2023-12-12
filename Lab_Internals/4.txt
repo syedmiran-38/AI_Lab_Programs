@@ -1,0 +1,60 @@
+﻿# Write a python program to implement A* algorithm.
+
+
+graph = [
+    ['A', 'B', 1, 3], ['A', 'C', 2, 4], ['A', 'H', 7, 0], 
+    ['B', 'D', 4, 2], ['B', 'E', 6, 6], ['C', 'F', 3, 3], 
+    ['C', 'G', 2, 1], ['D', 'E', 7, 6], ['D', 'H', 5, 0], 
+    ['F', 'H', 1, 0], ['G', 'H', 2, 0]
+]
+
+
+nodes = set()
+for edge in graph:
+    nodes.add(edge[0])
+    nodes.add(edge[1])
+
+
+costs = {node: float('inf') for node in nodes}
+path = {node: '' for node in nodes}
+open_set = set()
+closed_set = set()
+start_node = 'A'
+end_node = 'H'
+
+
+costs[start_node] = 0
+open_set.add(start_node)
+
+
+while open_set:
+    current_node = min(open_set, key=lambda node: costs[node])
+
+
+    if current_node == end_node:
+        break
+
+
+    open_set.remove(current_node)
+    closed_set.add(current_node)
+
+
+    for edge in graph:
+        if edge[0] == current_node:
+            neighbor = edge[1]
+            new_cost = costs[current_node] + edge[2] + edge[3]
+
+
+            if new_cost < costs[neighbor]:
+                open_set.add(neighbor)
+
+
+            costs[neighbor] = new_cost
+            path[neighbor] = path[current_node] + '>' + neighbor
+
+
+if costs[end_node] < float('inf'):
+    print(f'Shortest Path from {start_node} to {end_node}: {path[end_node]}')
+    print(f'Total Cost: {costs[end_node]}')
+else:
+    print(f'No path found from {start_node} to {end_node}')

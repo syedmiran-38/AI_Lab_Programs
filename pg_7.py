@@ -1,0 +1,44 @@
+# Nested List
+nested_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+
+# Length of the list
+length_of_list = len(nested_list)
+print("Length of the list:", length_of_list)
+
+
+# Concatenation of lists
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+concatenated_list = list1 + list2
+print("Concatenated List:", concatenated_list)
+
+
+# Membership check
+element_to_check = 3
+if element_to_check in list1:
+    print(f"{element_to_check} is in list1.")
+else:
+    print(f"{element_to_check} is not in list1.")
+
+
+# Iteration over the list
+print("Iterating over list2:")
+for item in list2:
+    print(item)
+
+
+# Indexing
+index_to_get = 1
+value_at_index = list1[index_to_get]
+print(f"Value at index {index_to_get}: {value_at_index}")
+
+
+# Slicing
+sliced_list = list2[1:3]
+print("Sliced List:", sliced_list)
+
+
+# Accessing elements in a nested list
+element_in_nested_list = nested_list[1][2]
+print(f"Element at nested list index [1][2]: {element_in_nested_list}")
