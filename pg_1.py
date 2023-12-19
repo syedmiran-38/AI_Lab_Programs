@@ -4,15 +4,18 @@ class Graph:
     def __init__(self):
         self.graph = {}
 
+
     def add_edge(self, u, v):
         if u in self.graph:
             self.graph[u].append(v)
         else:
             self.graph[u] = [v]
 
+
     def dfs(self, start):
         visited = set()
         self.dfs_helper(start, visited)
+
 
     def dfs_helper(self, node, visited):
         visited.add(node)
@@ -22,6 +25,7 @@ class Graph:
                 if neighbor not in visited:
                     self.dfs_helper(neighbor, visited)
 
+
 if __name__ == "__main__":
     g = Graph()
     g.add_edge('A', 'B')
@@ -29,6 +33,7 @@ if __name__ == "__main__":
     g.add_edge('B', 'D')
     g.add_edge('B', 'E')
     g.add_edge('C', 'F')
+
 
     print("DFS traversal starting from node 'A':")
     g.dfs('A')

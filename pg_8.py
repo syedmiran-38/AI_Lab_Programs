@@ -1,0 +1,44 @@
+#8) 7) Write a python program to implement List operations, nested List, 
+# Length, Concatenation, Membership, Iteration, indexing and slicing :
+
+
+# Create a sample list
+my_list = [1, 2, 3, 4, 5]
+
+# Method 1: append() - Adds an element to the end of the list
+my_list.append(6)
+print("List after append(6):", my_list)
+
+# Method 2: extend() - Extends the list by appending elements from another iterable
+extension_list = [7, 8, 9]
+my_list.extend(extension_list)
+print("List after extend([7, 8, 9]):", my_list)
+
+# Method 3: insert() - Inserts an element at a specified position
+my_list.insert(2, 10)
+print("List after insert(2, 10):", my_list)
+
+# Method 4: remove() - Removes the first occurrence of a value
+my_list.remove(3)
+print("List after remove(3):", my_list)
+
+# Method 5: pop() - Removes and returns an element at a specified index
+popped_element = my_list.pop(4)
+print("List after pop(4):", my_list)
+print("Popped element:", popped_element)
+
+# Method 6: index() - Returns the index of the first occurrence of a value
+index_of_4 = my_list.index(4)
+print("Index of 4:", index_of_4)
+
+# Method 7: count() - Returns the number of occurrences of a value
+count_of_2 = my_list.count(2)
+print("Count of 2:", count_of_2)
+
+# Method 8: reverse() - Reverses the elements of the list in place
+my_list.reverse()
+print("List after reverse():", my_list)
+
+# Method 9: sort() - Sorts the elements of the list in place
+my_list.sort()
+print("List after sort():", my_list)
